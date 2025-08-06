@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 12:03:17 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/06 13:32:05 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/06 23:15:27 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ static int	has_required_elements(char **map)
 			if (map[i][j] == 'P')
 				player = 1;
 			else if (map[i][j] == 'E')
-				exit = 1;
+				exit++;
 			else if (map[i][j] == 'C')
 				col = 1;
 		}
 	}
-	return (player && col && exit);
+	return (player && col && exit == 1);
 }
 
-static int	has_border_wall(char **map)
+static int	is_border_wall(char **map)
 {
 	int	i;
 	int	width;
@@ -81,15 +81,40 @@ static int	has_border_wall(char **map)
 	return (1);
 }
 
+static t_point	find_player(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+				return ((t_point){j, i});
+			j++;
+		}
+		i++;
+	}
+	return ((t_point){-1, -1});
+}
+
 int	is_valid_map(char **map)
 {
+	t_point	player_pos;
+
 	if (!is_rectangular(map))
 		return (0);
 	if (!is_border_wall(map))
 		return (0);
 	if (!has_required_elements(map))
 		return (0);
-	if (!is_path_valid(map))
+	player_pos = find_player(map);
+	if (player_pos.x == -1 || player_pos.y == -1)
+		return (0);
+	if (!is_path_valid(map, player_pos))
 	{
 		printf("Path to collectibles or exit is blocked\n");
 		return (0);

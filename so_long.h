@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:47:39 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/06 14:26:00 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/06 23:09:18 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define SO_LONG_H
 
 # include <stdlib.h>
-# include "mlx.h"
+# include <stdio.h>
+# include <fcntl.h>
+# include "minilibx-linux/mlx.h"
 # include "get_next_line/get_next_line.h"
 
 typedef struct s_point
