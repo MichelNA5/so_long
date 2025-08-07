@@ -6,7 +6,7 @@
 /*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:47:39 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 18:24:16 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/07 23:10:18 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_game
 	int		map_h;
 	t_point	player_pos;
 	t_img	img;
+	int		moves;
 }	t_game;
 
 int		row_len(char **map);
@@ -63,5 +64,9 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+
+int		is_over(char **map);
+int		close_window(t_game *game);
+void	draw_move_count(t_game *game);
 
 #endif

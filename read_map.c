@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:23:11 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 15:01:21 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/07 23:21:13 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char	**copy_map(char **map, char *line, int count)
 		i++;
 	}
 	new_map[count] = line;
+	new_map[count + 1] = NULL;
 	free(map);
 	return (new_map);
 }
@@ -52,5 +53,7 @@ char	**read_map(char *filename)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	if (map)
+		map[count] = NULL;
 	return (map);
 }

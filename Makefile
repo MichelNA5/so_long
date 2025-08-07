@@ -26,6 +26,7 @@ SRCS = main.c \
 	   render_map.c\
 	   movements.c\
        get_next_line/get_next_line.c \
+	   check_if_over.c\
        get_next_line/get_next_line_utils.c
 
 # Object files
