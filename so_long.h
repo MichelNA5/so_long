@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:47:39 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 16:51:02 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/07 18:24:16 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,10 @@ void	init_images(t_game *game);
 void	get_map_dimensions(t_game *game);
 int		is_valid_map(char **map);
 int		draw_map(t_game *game);
+
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:01:51 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 16:51:23 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/07 19:07:26 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int	handle_key(int keycode, t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
+	if (keycode == 119)
+		move_up(game);
+	else if (keycode == 115)
+		move_down(game);
+	else if (keycode == 97)
+		move_left(game);
+	else if (keycode == 100)
+		move_right(game);
 	return (0);
 }
 
