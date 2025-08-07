@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 12:50:13 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 16:43:40 by mnaouss          ###   ########.fr       */
+/*   Created: 2025/08/07 15:38:47 by mnaouss           #+#    #+#             */
+/*   Updated: 2025/08/07 16:28:04 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	col_len(char *str)
+void	re_render(t_game	*game)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	return (i);
+	mlx_clear_window(game->mlx, game->win);
+	draw_map(game);
 }
 
-int	row_len(char **map)
+void	move_up(t_game	*game)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
+	re_render(game);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 12:03:17 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/06 23:15:27 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/07 16:45:38 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	is_border_wall(char **map)
 	return (1);
 }
 
-static t_point	find_player(char **map)
+t_point	find_player(char **map)
 {
 	int	i;
 	int	j;
