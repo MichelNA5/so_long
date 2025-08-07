@@ -6,7 +6,7 @@
 /*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:38:47 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 19:15:26 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/07 20:06:01 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move_up(t_game *game)
 
 	y = game->player_pos.y - 1;
 	x = game->player_pos.x;
-	if (can_move(game, y, x))
+	if (can_move(game, y, x) && game->map[y][x] != 'E')
 	{
 		game->map[game->player_pos.y][x] = '0';
 		game->player_pos.y = y;
