@@ -25,6 +25,7 @@ SRCS = main.c \
        utils.c \
 	   render_map.c\
 	   movements.c\
+	   utils2.c\
        get_next_line/get_next_line.c \
 	   check_if_over.c\
        get_next_line/get_next_line_utils.c

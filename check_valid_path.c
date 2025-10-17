@@ -3,20 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:11:34 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 09:42:01 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/11 18:52:17 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static int	is_exit_reachable(char **map, t_point size)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < size.y)
+	{
+		x = 0;
+		while (x < size.x)
+		{
+			if (map[y][x] == 'E')
+			{
+				if ((y > 0 && map[y - 1][x] == 'F') ||
+					(y < size.y - 1 && map[y + 1][x] == 'F') ||
+					(x > 0 && map[y][x - 1] == 'F') ||
+					(x < size.x - 1 && map[y][x + 1] == 'F'))
+					return (1);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
 static void	fill(char **tab, t_point size, char target, t_point pos)
 {
 	if (pos.y < 0 || pos.x < 0 || pos.y >= size.y || pos.x >= size.x)
 		return ;
-	if (tab[pos.y][pos.x] == 'F' || tab[pos.y][pos.x] == '1')
+	if (tab[pos.y][pos.x] == 'F' || tab[pos.y][pos.x] == '1'
+		|| tab[pos.y][pos.x] == 'E')
 		return ;
 	tab[pos.y][pos.x] = 'F';
 	fill(tab, size, target, (t_point){pos.x, pos.y - 1});
@@ -33,49 +60,28 @@ static void	flood_fill(char **tab, t_point size, t_point begin)
 	fill(tab, size, target, begin);
 }
 
-static char	**deep_copy_map(char **map)
-{
-	int		i;
-	char	**mapcpy;
-
-	mapcpy = malloc(sizeof(char *) * (row_len(map) + 1));
-	if (!mapcpy)
-		return (NULL);
-	i = 0;
-	while (i < row_len(map))
-	{
-		mapcpy[i] = ft_strdup(map[i]);
-		if (!mapcpy[i])
-		{
-			while (--i >= 0)
-				free(mapcpy[i]);
-			free(mapcpy);
-			return (NULL);
-		}
-		i++;
-	}
-	mapcpy[i] = NULL;
-	return (mapcpy);
-}
-
 static int	check_map_valid(char **mapcpy)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_point	size;
 
+	size.y = row_len(mapcpy);
+	size.x = col_len(mapcpy[0]);
 	i = 0;
 	while (mapcpy[i])
 	{
 		j = 0;
 		while (mapcpy[i][j])
 		{
-			if (mapcpy[i][j] == 'C' || mapcpy[i][j] == 'E' ||
-				mapcpy[i][j] == 'P')
+			if (mapcpy[i][j] == 'C' || mapcpy[i][j] == 'P')
 				return (0);
 			j++;
 		}
 		i++;
 	}
+	if (!is_exit_reachable(mapcpy, size))
+		return (0);
 	return (1);
 }
 

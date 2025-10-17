@@ -6,7 +6,7 @@
 /*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:38:47 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 23:32:27 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/12 20:24:10 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static void	update_player_position(t_game *game, int y, int x, char *img_path)
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
 	game->moves++;
-	printf("Moves: %d\n", game->moves);
+	write(1, "Moves: ", 7);
+	ft_putnbr_fd(game->moves, 1);
+	write(1, "\n", 1);
 	draw_move_count(game);
 }
 

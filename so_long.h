@@ -6,7 +6,7 @@
 /*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:47:39 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 23:10:18 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/12 20:24:52 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,10 @@ void	move_right(t_game *game);
 int		is_over(char **map);
 int		close_window(t_game *game);
 void	draw_move_count(t_game *game);
+void	free_map(char **map);
+char	**deep_copy_map(char **map);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	draw_move_count(t_game *game);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

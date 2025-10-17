@@ -6,7 +6,7 @@
 /*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 12:03:17 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 18:07:24 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/11 19:32:03 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,29 @@ static int	has_required_elements(char **map)
 {
 	int	i;
 	int	j;
-	int	player;
-	int	col;
-	int	exit;
+	int	counts[3];
 
 	i = -1;
-	player = 0;
-	col = 0;
-	exit = 0;
+	counts[0] = 0;
+	counts[1] = 0;
+	counts[2] = 0;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
 			if (map[i][j] == 'P')
-				player = 1;
+				counts[0]++;
 			else if (map[i][j] == 'E')
-				exit++;
+				counts[1]++;
 			else if (map[i][j] == 'C')
-				col = 1;
+				counts[2] = 1;
+			else if (map[i][j] != '1' && map[i][j] != '0' &&
+				map[i][j] != '\n')
+				return (0);
 		}
 	}
-	return (player && col && exit == 1);
+	return (counts[0] == 1 && counts[2] && counts[1] == 1);
 }
 
 static int	is_border_wall(char **map)
@@ -116,7 +117,6 @@ int	is_valid_map(char **map)
 		return (0);
 	if (!is_path_valid(map, player_pos))
 	{
-		printf("Path to collectibles or exit is blocked\n");
 		return (0);
 	}
 	return (1);

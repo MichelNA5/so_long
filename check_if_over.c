@@ -6,13 +6,13 @@
 /*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 21:49:55 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/08/07 23:44:09 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/08/11 18:14:11 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	free_map(char **map)
+void	free_map(char **map)
 {
 	int	i;
 
